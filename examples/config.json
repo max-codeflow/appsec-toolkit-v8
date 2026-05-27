@@ -1,0 +1,6 @@
+{
+  "target": "https://example.com",
+  "max_pages": 25,
+  "timeout": 5,
+  "modules": ["headers", "xss", "sqli", "secrets", "jwt"]
+}
