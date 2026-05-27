@@ -1,66 +1,76 @@
 # 🛡 AppSec Toolkit v8
 
-A modular Application Security scanning framework designed for learning security engineering, automation, and vulnerability research.
+A modular Application Security scanning engine for crawling, vulnerability detection, and security reporting.
 
-It simulates real-world AppSec tooling architecture: crawler, scanner engine, plugin-based detection modules, structured findings, and reproducible CLI workflows.
-
----
-
-## 🚀 Features
-
-- Modular plugin-based architecture for security checks  
-- Bounded crawler with scope control  
-- Unified HTTP client layer  
-- Structured findings schema (severity, evidence, remediation)  
-- CLI-driven scanning workflow  
-- JSON + human-readable reporting  
-- Extensible design for custom modules  
+Designed for learning real-world AppSec engineering:
+- web crawling
+- vulnerability scanning
+- plugin-based architecture
+- structured reporting
 
 ---
 
-## ⚙️ Installation
+# 🚀 Features
+
+## 🧭 Crawling Engine
+- URL discovery
+- same-domain filtering
+- depth-limited scanning
+
+## 🧩 Security Modules
+- Security headers analysis
+- JWT inspection (basic validation checks)
+- Secrets detection (regex-based)
+- Reflected XSS detection (heuristic)
+- SQLi detection (error-based signals)
+
+## 📊 Reporting
+- JSON structured report
+- human-readable summary
+- grouped findings by severity
+
+---
+
+# ⚙️ Installation
 
 ```bash
+git clone https://github.com/max-codeflow/appsec-toolkit-v8.git
+cd appsec-toolkit-v8
+
 python -m venv .venv
 source .venv/bin/activate
-pip install -r v8/requirements.txt
+
+pip install -r requirements.txt
 
 🚀 Usage
 
-Basic scan
-python -m v8.appsec_toolkit.cli scan --target "https://example.com" --out-dir output
-Config-based scan
-python -m v8.appsec_toolkit.cli scan --config examples/config.json
-
+python appsec_toolkit/cli.py scan \
+  --target https://example.com \
+  --max-pages 25 \
+  --out-dir output
 📦 Output
-
-After execution, results are stored in:
-
 output/
 ├── report.json
 └── summary.txt
 
 🧠 Architecture
 
-See docs/ARCHITECTURE.md
+Modular design:
 
-🧩 Modules
+CLI → Crawler → Scanner → Modules → Reporter
 
-Module	Purpose
-headers	Missing security headers detection
-xss	Reflected input analysis
-sqli	SQL injection indicators
-secrets	Sensitive data exposure detection
-jwt	JWT risk and misconfiguration analysis
+Each module is independent and extendable.
+
+See docs/ARCHITECTURE.md for details.
 
 🎯 Design Goals
 
-Separation of concerns (core vs modules)
-Reproducible scanning pipeline
-Structured findings schema
-Extensible security research framework
-CLI-first design
+clean modular architecture
+extensibility via modules
+reproducible scanning pipeline
+educational AppSec simulation tool
 
 ⚠️ Disclaimer
 
-This tool is intended for educational and authorized security testing purposes only.
+This tool is intended for educational and authorized security testing only.
+Do not use it on systems without permission.
